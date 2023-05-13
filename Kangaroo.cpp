@@ -125,6 +125,8 @@ bool Kangaroo::ParseConfigFile(std::string &fileName) {
   rangeEnd.SetBase16((char *)lines[1].c_str());
   for(int i=2;i<(int)lines.size();i++) {
     
+    if (lines[i][0] == '#')
+      continue;
     Point p;
     bool isCompressed;
     if( !secp->ParsePublicKeyHex(lines[i],p,isCompressed) ) {
